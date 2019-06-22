@@ -2,10 +2,23 @@ import cv2
 import numpy as np
 import wx
 
+
 class WebCam(object):
 
     def __init__(self):
-        self.webcam = cv2.VideoCapture(0)
+        self.video_index = -1
+        self.webcam = cv2.VideoCapture(self.video_index)
+
+    def scan_for_source(self):
+        while self.video_index < 10:
+            self.video_index += 1
+            print("Scanning for source. Using ID {}".format(self.video_index))
+            self.webcam = cv2.VideoCapture(self.video_index)
+            if self.has_webcam():
+                return False
+        self.video_index = 0
+        self.webcam = cv2.VideoCapture(self.video_index)
+        return False
 
     def has_webcam(self):
         _, frame = self.webcam.read()
