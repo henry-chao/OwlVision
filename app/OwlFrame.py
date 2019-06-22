@@ -39,7 +39,7 @@ class OwlFrame(wx.Frame):
         frame_w, frame_h = self.pnl.GetSize()
         frame = self.webcam.get_image(frame_w, frame_h)
         h, w = frame.shape[:2]
-        image = wx.BitmapFromBuffer(w, h, frame)
+        image = wx.Bitmap.FromBuffer(w, h, frame)
 
         # Buffer the image
         dc = wx.BufferedPaintDC(self.pnl)
