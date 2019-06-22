@@ -3,6 +3,6 @@ from app.OwlFrame import OwlFrame
 
 if __name__ == '__main__':
     app = App()
-    frm = OwlFrame(None, title="OwlVision", style=STAY_ON_TOP)
+    frm = OwlFrame()
     frm.Show()
     app.MainLoop()

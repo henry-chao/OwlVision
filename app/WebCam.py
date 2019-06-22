@@ -17,7 +17,7 @@ class WebCam(object):
         _, frame = self.webcam.read()
         if w is not None and h is not None:
             frame = cv2.resize(frame, (w, h))
-        return frame
+        return cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
 
     def size(self):
         _, frame = self.webcam.read()

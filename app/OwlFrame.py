@@ -5,10 +5,9 @@ from app.WebCam import WebCam
 
 class OwlFrame(wx.Frame):
 
-    def __init__(self, *args, **kw):
-        super(OwlFrame, self).__init__(*args, **kw)
-        self.SetSizeHintsSz(wx.DefaultSize, wx.DefaultSize)
-        self.Layout()
+    def __init__(self):
+        style = wx.STAY_ON_TOP | wx.RESIZE_BORDER | wx.CLOSE_BOX | wx.CAPTION
+        super(OwlFrame, self).__init__(None, title="OwlFrame", style=style)
         self.pnl = wx.Panel(self)
 
         self.webcam = WebCam()
