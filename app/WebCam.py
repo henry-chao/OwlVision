@@ -1,0 +1,24 @@
+import cv2
+import numpy as np
+import wx
+
+class WebCam(object):
+
+    def __init__(self):
+        self.webcam = cv2.VideoCapture(0)
+
+    def has_webcam(self):
+        _, frame = self.webcam.read()
+        if(isinstance(frame, np.ndarray)):
+            return True
+        return False
+
+    def get_image(self, w=None, h=None):
+        _, frame = self.webcam.read()
+        if w is not None and h is not None:
+            frame = cv2.resize(frame, (w, h))
+        return frame
+
+    def size(self):
+        _, frame = self.webcam.read()
+        return frame.shape[:2]
